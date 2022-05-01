@@ -1,0 +1,8 @@
+
+
+body {
+	background-color: black!important;
+	color: white!important;
+    background:            linear-gradient(to left top, #E63E6D, #2A0944);
+    background-attachment: fixed; /*edit*/
+}
