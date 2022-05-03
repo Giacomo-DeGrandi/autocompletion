@@ -6,10 +6,10 @@ abstract class Model{
 
     function connect(){
 
-        $server="localhost:3600";
-        $username="autocompletionuser";
-        $password="autocompletionuser";
-        $database="carlo-de-grandi-giacomo_autocompletion";
+        $server="localhost";
+        $username="root";
+        $password="";
+        $database="autocomplete";
 
         $dsn = "mysql:host=$server;dbname=$database;charset=UTF8";
         $this->conn = new PDO($dsn, $username, $password);

@@ -1,11 +1,84 @@
-window.addEventListener('DOMContentLoaded', (event) => {
-   
-		// select input
-	const  myIns = document.querySelector('#search')
-	const  mySub = document.querySelector('#recherche')
 
-	
-	// add event to in 
+
+window.addEventListener('DOMContentLoaded', (event) => {
+
+	// select input
+	const  myIns = document.querySelector('#search')
+	const  res = document.querySelector('#autocompleteRes')
+
+
+	myIns.addEventListener('input', getIn)
+
+	function getIn(e){
+
+		res.innerHTML = ''
+
+		let formData = new FormData();
+
+		formData.append('val', e.target.value.toLowerCase());
+
+		fetch("php/search.php", {
+			method: 'POST',
+			body: formData,
+		})
+			.then(response => response.json())
+			.then(data =>{
+				//condition for init list
+				if(e.target.value.length > 0 ){
+					// get names from obj
+					let names = Object.values(data)
+					// get ids from obj
+					let ids = Object.keys(data)
+
+					let links;
+					for(let i=0; i<ids.length;i++){
+						let lis = document.createElement('li')
+						res.appendChild(lis);
+						links = document.createElement('a')
+						links.setAttribute('class','link-light p-1')
+						links.href = 'php/View/element.php/?id=' + ids[i]
+						lis.appendChild(links)
+						links.innerHTML = names[i];
+					}
+
+				}
+			})
+	}
+})
+
+	/*
+
+
+							res.innerHTML += '<li>' + '<a href="recherche.php?/search=' +
+												data[i] + ' " >' + data[i] + '</a>' + '</li>';
+						console.log(res.innerHTML)
+
+
+	// FIRST METHOD
+
+
+					console.log(data)
+				let root = 'recherche.php'
+
+				// let JSONs = data.map( ({}) => ({}) )
+				let links = data.map(item => {
+					return {
+						value: root + item,
+						label: item
+					};
+				});
+
+				$('#search').autocomplete({
+					source: links,
+					select : function( event, ui ) {
+						window.location.href = ui.item.value;
+					}
+				});
+
+				console.log(links)
+
+
+	// SECOND METHOD
 	
 	myIns.addEventListener('input', getIn)
 	
@@ -19,11 +92,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
                         method: 'POST',
                         body: formData,
                     })
-					.then(response => response.text())
+					.then(response => response.json())
                     .then(data =>{
 						console.log(data);
-		
+
+
 					})
 	}
-	
-})
+	*/

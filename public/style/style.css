@@ -6,3 +6,16 @@ body {
     background:            linear-gradient(to left top, #E63E6D, #2A0944);
     background-attachment: fixed; /*edit*/
 }
+
+a {
+    text-decoration:none!important;
+}
+
+.display-7 {
+    font-weight: lighter!important;
+    font-size:0.5em!important;
+}
+
+.link-light:hover {
+    background-color: #3E2B50!important;
+}
