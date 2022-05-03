@@ -40,7 +40,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
 						lis.appendChild(links)
 						links.innerHTML = names[i];
 					}
-
 				}
 			})
 	}
