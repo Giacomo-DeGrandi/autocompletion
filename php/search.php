@@ -33,24 +33,62 @@ if(isset($_POST['val'])){
             }
         }
     }
-    // reorder
+    // reorder 1
     // if names_is_arr && search_is_arr
     // split names and search
     // if names_first_firstchar != sear_first_firstchar
-    if(isset($names[1]) && isset($search[0]) && isset($names[2])){
-        if($names[1][0] !==  $search[0]){
-
-            $alias=$names[2];
-            $names[2]=$names[1];
-            $names[1]=$alias;
+    for($i=0;$i<=isset($names[$i]);$i++){
+        for($j=0;$j<=isset($names[$i][$j]);$j++){
+            if(isset($names[$i+1]) and strtolower($names[$i+1][0]) === strtolower($search)){
+                $alias = $names[$i+1];
+                $names[$i+1] = $names[$i];
+                $names[$i] = $alias;
+            }
         }
     }
+    $arrBeforeSort = array_combine($ids,$names);
+    // reorder 2
+    // get the first letter, then trim it from
+    // values, then get the lasts chars and sort
+    // them alphabetically
+    $selArr = [];
+    $incArr = [];
 
-    $arr = array_combine($ids,$names);
-    print_r(json_encode($arr)); //my names and ids array
+    for($l=0;$l<=isset($names[$l]);$l++){
+        if($names[$l][0] == $names[0][0]){
+            $selArr [] = $names[$l];
+        } else {
+            $incArr [] = $names[$l];
+        }
+          //  $selArr [] = $names[$l][0];
+        //    $names[$l] = trim($names[$l],$names[$l][0]);
+    }
+    // sort by alphabeth
+    sort($selArr);
+    sort($incArr);
+    $merge = array_merge($selArr, $incArr);
+    $karr = [];
+    $varr = [];
+    foreach($merge as $k => $v){
+        foreach($arrBeforeSort as $m => $n){
+            if($v === $n){
+                $karr []= $m;
+            }
+        }
+    }
+    $comb = array_combine($karr, $merge);
+    print_r(json_encode($comb)); //my names and ids array
 }
 
 /*
+ *
+ *
+ *
+ *         if($names[$i][0] !== $search[0]){
+            $alias = $names[$i+1];
+            $names[$i+1] = $names[$i];
+            $names[$i] = $alias;
+        }
 
     foreach ($all as $k => $v) {
         foreach ($v as $t => $autname) {

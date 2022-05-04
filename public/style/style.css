@@ -1,5 +1,4 @@
-
-
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500;600;700;800&display=swap');
 body {
 	background-color: black!important;
 	color: white!important;
@@ -7,8 +6,16 @@ body {
     background-attachment: fixed; /*edit*/
 }
 
+*{
+    font-family: 'Open Sans', sans-serif!important;
+}
+
 a {
     text-decoration:none!important;
+}
+
+.display-1{
+    font-weight:500!important;
 }
 
 .display-7 {
@@ -17,5 +24,6 @@ a {
 }
 
 .link-light:hover {
+    width:100%!important;
     background-color: #5F347F!important;
 }
