@@ -30,6 +30,12 @@ class Autocomplete extends Model{
         $r = $r->fetchAll();
         return $r;
     }
+    function getAll(){
+        $sql = "SELECT name,id,description,data1,provenance FROM elements ORDER BY name ASC";
+        $r = $this->selectQuery($sql);
+        $r = $r->fetchAll();
+        return $r;
+    }
 }
 
 
