@@ -43,10 +43,12 @@ if(isset($_POST['val'])){
     $nameLast = array_combine($lastIds,$lastArr);
 
     $n = array_chunk($nameLast,1, true);
-
     print_r(json_encode($n));
 
 }
+
+
+
 
 /*
  *

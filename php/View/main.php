@@ -14,14 +14,15 @@
           rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
           crossorigin="anonymous">
     <?php echo $script ?>
-    <title>Autocompletion</title>
+    <title><?php ?></title>
 </head>
 <body>
 <header>
+
+    <?php if(isset($header)){ echo $header; }  ?>
 </header>
 <main>
-
-		<?php echo $index ?>
+    <?php echo $index ?>
 </main>
 
 <footer class=" p-5">

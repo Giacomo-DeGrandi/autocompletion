@@ -2,7 +2,7 @@
 body {
 	background-color: black!important;
 	color: white!important;
-    background:            linear-gradient(to left top, #E63E6D, #2A0944);
+    background:            linear-gradient(to left top, #E63E6D, #2A0944)!important;
     background-attachment: fixed; /*edit*/
 }
 
@@ -26,4 +26,11 @@ a {
 .link-light:hover {
     width:100%!important;
     background-color: #5F347F!important;
+}
+
+body > main > div > div > a{
+    color:white!important;
+}
+body > main > div > div > a:hover{
+    box-shadow: rgba(0, 0, 0, 0.54) 0px 3px 8px!important;
 }

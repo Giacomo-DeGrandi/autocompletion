@@ -11,8 +11,7 @@ class Autocomplete extends Model{
         $sql = "SELECT DISTINCT name,id FROM elements ORDER BY name REGEXP :input DESC, name";
         $p = [':input' => $input ];
         $r = $this->selectQuery($sql,$p);
-        $r = $r->fetchAll();
-        return $r;
+        return $r->fetchAll();
     }
 
     function getAllByLetter($input){
@@ -20,22 +19,21 @@ class Autocomplete extends Model{
         $sql = "SELECT DISTINCT name,id,description,data1,provenance FROM elements ORDER BY name REGEXP :input DESC, name";
         $p = [':input' => $input ];
         $r = $this->selectQuery($sql,$p);
-        $r = $r->fetchAll();
-        return $r;
+        return $r->fetchAll();
     }
     function getAllByMulLetter($input){
         $sql = "SELECT name,id,description,data1,provenance FROM elements WHERE INSTR (name, :input )";
         $p = [':input' => $input ];
         $r = $this->selectQuery($sql,$p);
-        $r = $r->fetchAll();
-        return $r;
+        return $r->fetchAll();
     }
-    function getAll(){
-        $sql = "SELECT name,id,description,data1,provenance FROM elements ORDER BY name ASC";
-        $r = $this->selectQuery($sql);
-        $r = $r->fetchAll();
-        return $r;
+    function getElById($id){
+        $p=[':id' => $id];
+        $sql = "SELECT * FROM elements WHERE id = :id";
+        $r = $this->selectQuery($sql,$p);
+        return $r->fetchAll();
     }
+
 }
 
 

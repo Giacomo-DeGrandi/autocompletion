@@ -20,5 +20,4 @@ if(isset($_GET['search'])){
             $res = array_unique($res,SORT_REGULAR);
         }
     }
-    var_dump($res);
 }
