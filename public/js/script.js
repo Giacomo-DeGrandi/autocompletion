@@ -27,14 +27,15 @@ window.addEventListener('DOMContentLoaded', (event) => {
 			.then(response => response.json())
 			.then(data =>{
 
-
 				//condition for init list
 				if(e.target.value.length > 0 ){
-					// get names from obj
-					let names = Object.values(data)
-					// get ids from obj
-					let ids = Object.keys(data)
-
+					let names = [];
+					let ids = [];
+					for(let i=0;i<data.length;i++){
+						names.push(Object.values(data[i]))
+						ids.push(Object.keys(data[i]))
+					}
+					console.log(names)
 					let links;
 					for(let i=0; i<ids.length;i++){
 						let lis = document.createElement('li')

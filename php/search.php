@@ -13,17 +13,15 @@ if (!function_exists('str_contains')) {
     }
 }
 
-
-$namearr = [];
-$ord_keys = [];
-
 if(isset($_POST['val'])){
     // add here security
     $search = $_POST['val'];
     $all = $complete->getIns($search);
+
     $all2 = $all; // alias for ids
     $names =  [];
     $ids = [];
+
     for($j=0;$j<=isset($all[$j]);$j++){
         foreach($all2[$j] as $l => $p ){
             if($l === 'name'){
@@ -33,56 +31,49 @@ if(isset($_POST['val'])){
             }
         }
     }
-    // reorder 1
-    // if names_is_arr && search_is_arr
-    // split names and search
-    // if names_first_firstchar != sear_first_firstchar
-    for($i=0;$i<=isset($names[$i]);$i++){
-        for($j=0;$j<=isset($names[$i][$j]);$j++){
-            if(isset($names[$i+1]) and strtolower($names[$i+1][0]) === strtolower($search)){
-                $alias = $names[$i+1];
-                $names[$i+1] = $names[$i];
-                $names[$i] = $alias;
-            }
+    $nameall = array_combine($ids,$names);
+    $lastArr = [];
+    $lastIds = [];
+    foreach($nameall as $k => $v){
+        if(str_contains(strtolower($v),$search)){
+            $lastArr[] = $v;
+            $lastIds[] = $k;
         }
     }
-    $arrBeforeSort = array_combine($ids,$names);
-    // reorder 2
-    // get the first letter, then trim it from
-    // values, then get the lasts chars and sort
-    // them alphabetically
-    $selArr = [];
-    $incArr = [];
+    $nameLast = array_combine($lastIds,$lastArr);
 
-    for($l=0;$l<=isset($names[$l]);$l++){
-        if($names[$l][0] == $names[0][0]){
-            $selArr [] = $names[$l];
-        } else {
-            $incArr [] = $names[$l];
-        }
-          //  $selArr [] = $names[$l][0];
-        //    $names[$l] = trim($names[$l],$names[$l][0]);
-    }
-    // sort by alphabeth
-    sort($selArr);
-    sort($incArr);
-    $merge = array_merge($selArr, $incArr);
-    $karr = [];
-    $varr = [];
-    foreach($merge as $k => $v){
-        foreach($arrBeforeSort as $m => $n){
-            if($v === $n){
-                $karr []= $m;
-            }
-        }
-    }
-    $comb = array_combine($karr, $merge);
-    print_r(json_encode($comb)); //my names and ids array
+    $n = array_chunk($nameLast,1, true);
+
+    print_r(json_encode($n));
+
 }
 
 /*
  *
  *
+ *
+ *
+ *
+ *
+ *  $all2 = $all; // alias for ids
+    $names =  [];
+    $ids = [];
+    $sameArr = [];
+    $idOrd = [];
+    for($j=0;$j<=isset($all[$j]);$j++){
+        foreach($all2[$j] as $l => $p ){
+            if($l === 'name'){
+                $names[] = $p;
+            } else if( $l === 'id'){
+                $ids[] = $p;
+            }
+        }
+    }
+
+    print_r($names);
+    print_r($ids);
+
+
  *
  *         if($names[$i][0] !== $search[0]){
             $alias = $names[$i+1];
@@ -138,5 +129,57 @@ if(isset($_POST['val'])){
     //print_r($ord_keys);
 
 }
-*/
+
+
+    /*
+    // reorder 1
+    // if names_is_arr && search_is_arr
+    // split names and search
+    // if names_first_firstchar != sear_first_firstchar
+    for($i=0;$i<=isset($names[$i]);$i++){
+        for($j=0;$j<=isset($names[$i][$j]);$j++){
+            if(isset($names[$i+1]) and strtolower($names[$i+1][0]) === strtolower($search)){
+                $alias = $names[$i+1];
+                $names[$i+1] = $names[$i];
+                $names[$i] = $alias;
+            }
+        }
+    }
+    print_r($names);
+    $arrBeforeSort = array_combine($ids,$names);
+    // reorder 2
+    // get the first letter, then trim it from
+    // values, then get the lasts chars and sort
+    // them alphabetically
+    $selArr = [];
+    $incArr = [];
+
+    for($l=0;$l<=isset($names[$l]);$l++){
+        if($names[$l][0] == $names[0][0]){
+            $selArr [] = $names[$l];
+        } else {
+            $incArr [] = $names[$l];
+        }
+          //  $selArr [] = $names[$l][0];
+        //    $names[$l] = trim($names[$l],$names[$l][0]);
+    }
+    // sort by alphabeth
+    sort($selArr);
+    sort($incArr);
+    $merge = array_merge($selArr, $incArr);
+    $karr = [];
+    $varr = [];
+    foreach($merge as $k => $v){
+        foreach($arrBeforeSort as $m => $n){
+            if($v === $n){
+                $karr []= $m;
+            }
+        }
+    }
+    print_r($arrBeforeSort);
+    print_r($karr);
+    $comb = array_combine($karr, $merge);
+
+    */
+
    
