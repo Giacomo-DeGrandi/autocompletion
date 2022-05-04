@@ -14,8 +14,8 @@ if(isset($_GET['search'])){
     } else {
         $res = $complete->getAllByLetter($_GET['search']);
         if($res[0]['name'][0]!==$_GET['search']){
-            $res = $complete->getAllByMulLetter($_GET['search']);
-            $resAdd = $complete->getAllByLetter($_GET['search']);
+            $resAdd = $complete->getAllByMulLetter($_GET['search']);
+            $res = $complete->getAllByLetter($_GET['search']);
             array_push($res,...$resAdd);
             $res = array_unique($res,SORT_REGULAR);
         }
