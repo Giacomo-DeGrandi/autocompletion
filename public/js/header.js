@@ -35,14 +35,27 @@ window.addEventListener('DOMContentLoaded', (event) => {
                     console.log(names)
                     let links;
                     for(let i=0; i<ids.length;i++){
+
                         let lis = document.createElement('li')
-                        lis.setAttribute('class','p-1')
+                        console.log(e.target.value[0])
+                        console.log(names[i][0][0])
+                        if(names[i][0][0].toLowerCase() !== e.target.value[0].toLowerCase()){
+                            lis.setAttribute('class','p-2')
+                        } else {
+                            lis.setAttribute('class','shadow card bg-dark p-2')
+                        }
                         resH.appendChild(lis);
                         links = document.createElement('a')
                         links.setAttribute('class','link-light p-1')
-                        links.href = '../../../php/View/element.php/?id=' + ids[i]
+                        links.href = 'php/View/element.php/?id=' + ids[i]
                         lis.appendChild(links)
-                        links.innerHTML = names[i];
+                        if(names[i][0][0].toLowerCase() !== e.target.value[0].toLowerCase()){
+                            lis.setAttribute('class','p-2')
+                            links.innerHTML = names[i];
+                        } else {
+                            lis.setAttribute('class','shadow card bg-dark p-2')
+                            links.innerHTML = '🟡 ️' + names[i];
+                        }
                     }
                 }
                 myLinkH.href = '../../../php/View/recherche.php/?search=' + e.target.value
