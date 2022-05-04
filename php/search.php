@@ -13,6 +13,11 @@ if (!function_exists('str_contains')) {
     }
 }
 
+foreach ($_POST as $key => $value) {
+    $_POST[$key] = htmlspecialchars((string)$value, ENT_NOQUOTES | ENT_HTML5 | ENT_SUBSTITUTE,
+        'UTF-8', /*double_encode*/false );
+}
+
 if(isset($_POST['val'])){
     // add here security
     $search = $_POST['val'];

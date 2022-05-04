@@ -5,6 +5,11 @@ require_once('../../php/Model/Autocompletion.php');
 
 $complete = new Autocomplete();
 
+foreach ($_GET as $key => $value) {
+    $_GET[$key] = htmlspecialchars((string)$value, ENT_NOQUOTES | ENT_HTML5 | ENT_SUBSTITUTE,
+        'UTF-8', /*double_encode*/false );
+}
+
 if(isset($_GET['search'])){
     if(strlen($_GET['search'])>1){
         $res = $complete->getAllByMulLetter($_GET['search']);

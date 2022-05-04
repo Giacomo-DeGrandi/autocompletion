@@ -37,8 +37,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
                     for(let i=0; i<ids.length;i++){
 
                         let lis = document.createElement('li')
-                        console.log(e.target.value[0])
-                        console.log(names[i][0][0])
                         if(names[i][0][0].toLowerCase() !== e.target.value[0].toLowerCase()){
                             lis.setAttribute('class','p-2')
                         } else {
@@ -47,7 +45,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
                         resH.appendChild(lis);
                         links = document.createElement('a')
                         links.setAttribute('class','link-light p-1')
-                        links.href = 'php/View/element.php/?id=' + ids[i]
+                        links.href = '../../../php/View/element.php/?id=' + ids[i]
                         lis.appendChild(links)
                         if(names[i][0][0].toLowerCase() !== e.target.value[0].toLowerCase()){
                             lis.setAttribute('class','p-2')
