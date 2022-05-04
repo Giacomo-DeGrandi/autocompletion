@@ -8,7 +8,7 @@ class Autocomplete extends Model{
 
     function getIns($input){
         $input = '^['.$input.']';
-        $sql = "SELECT DISTINCT name,id FROM elements ORDER BY name REGEXP :input DESC, name";
+        $sql = "SELECT name,id FROM elements ORDER BY name REGEXP :input DESC, name";
         $p = [':input' => $input ];
         $r = $this->selectQuery($sql,$p);
         return $r->fetchAll();
@@ -16,7 +16,7 @@ class Autocomplete extends Model{
 
     function getAllByLetter($input){
         $input = '^['.$input.']';
-        $sql = "SELECT DISTINCT name,id,description,data1,provenance FROM elements ORDER BY name REGEXP :input DESC, name";
+        $sql = "SELECT name,id,description,data1,provenance FROM elements ORDER BY name REGEXP :input DESC, name";
         $p = [':input' => $input ];
         $r = $this->selectQuery($sql,$p);
         return $r->fetchAll();
