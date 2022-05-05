@@ -33,7 +33,7 @@ if(isset($_GET['search'])){
             array_push($res,...$resAdd);
 
             $res = array_unique($res,SORT_REGULAR);
-            
+
         }
     }
 }
