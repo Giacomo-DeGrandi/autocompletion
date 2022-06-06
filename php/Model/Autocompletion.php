@@ -12,19 +12,12 @@ class Autocomplete extends Model{
         return $r->fetchAll();
     }
 
-    function getAllByLetter($input){
-        $input = '^['.$input.']';
-        $sql = "SELECT name,id,description,data1,provenance FROM elements ORDER BY name REGEXP :input DESC, name";
-        $p = [':input' => $input ];
-        $r = $this->selectQuery($sql,$p);
+    function getInsAll(){
+        $sql = "SELECT * FROM elements";
+        $r = $this->selectQuery($sql);
         return $r->fetchAll();
     }
-    function getAllByMulLetter($input){
-        $sql = "SELECT name,id,description,data1,provenance FROM elements WHERE INSTR (name, :input )";
-        $p = [':input' => $input ];
-        $r = $this->selectQuery($sql,$p);
-        return $r->fetchAll();
-    }
+
     function getElById($id){
         $p=[':id' => $id];
         $sql = "SELECT * FROM elements WHERE id = :id";

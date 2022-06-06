@@ -50,12 +50,6 @@ function listIt(Autocomplete $complete, $search): array
     }
     $valArr = array_combine($id, $val);
     $myNewArr = [];
-    foreach($myArr as $k => $v){
-        foreach($v as $k2 => $v2){
-            $myNewArr[] = [$k2 => $v2];
-        }
-    }
-
     function flat($arr): array
     {
         $key=[];

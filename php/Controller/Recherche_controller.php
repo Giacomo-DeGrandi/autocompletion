@@ -8,7 +8,5 @@ $complete = new Autocomplete();
 
 
 if(isset($_GET['search'])){
-
-    $result = $complete->getAllByMulLetter($_GET['search']);
-    var_dump($result);
+    $res = $complete->getInsAll();
 }
