@@ -19,7 +19,7 @@ function listIt(Autocomplete $complete, $search): array
             }
         }
     }
-    // combine stacks for
+    // combine stacks for array of only id and names
     $nameall = array_combine($ids, $names);
     //new arr to fill with sorted values
     $myArr = [];
@@ -49,7 +49,7 @@ function listIt(Autocomplete $complete, $search): array
         }
     }
     $valArr = array_combine($id, $val);
-    $myNewArr = [];
+
     function flat($arr): array
     {
         $key=[];
@@ -63,7 +63,9 @@ function listIt(Autocomplete $complete, $search): array
         return array_combine($key, $val);
     }
 
-    $myNewArr = flat($myNewArr);
+    $myNewArr = flat($myArr);
+
+    asort($valArr,SORT_LOCALE_STRING);
 
     $mergeArr = $valArr + $myNewArr;
 
