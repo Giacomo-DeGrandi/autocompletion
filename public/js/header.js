@@ -3,7 +3,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     // select input
     const  myInsH = document.querySelector('#searchHeader')
     const  myLinkH = document.querySelector("#rechercheHeader")
-    const  resH = document.querySelector('#autocompleteHead')
+    const  res = document.querySelector('#autocompleteHead')
 
 
     myInsH.addEventListener('input', getIn)
@@ -11,7 +11,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     function getIn(e){
 
-        resH.innerHTML = ''
+        res.innerHTML = ''
 
         let formDataH = new FormData();
 
@@ -42,7 +42,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
                         } else {
                             lis.setAttribute('class','shadow card bg-dark p-2')
                         }
-                        resH.appendChild(lis);
+                        res.appendChild(lis);
                         links = document.createElement('a')
                         links.setAttribute('class','link-light p-1')
                         links.href = '../../../php/View/element.php/?id=' + ids[i]

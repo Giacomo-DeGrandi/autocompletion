@@ -6,11 +6,9 @@ class Autocomplete extends Model{
 
     function __construct(){}
 
-    function getIns($input){
-        $input = '^['.$input.']';
-        $sql = "SELECT name,id FROM elements ORDER BY name REGEXP :input DESC, name";
-        $p = [':input' => $input ];
-        $r = $this->selectQuery($sql,$p);
+    function getIns(){
+        $sql = "SELECT name,id FROM elements";
+        $r = $this->selectQuery($sql);
         return $r->fetchAll();
     }
 
